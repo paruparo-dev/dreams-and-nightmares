@@ -1,0 +1,132 @@
+[gd_scene format=3 uid="uid://dw8j77unvk2iq"]
+
+[ext_resource type="Script" uid="uid://cgg4cjh06ykk1" path="res://src/characters/TestPlayer.gd" id="1_coggd"]
+[ext_resource type="Script" uid="uid://vgdvj58go04a" path="res://src/core/StateMachine.gd" id="2_pxk5c"]
+[ext_resource type="Script" uid="uid://lm5uqueydjvu" path="res://src/states/characters/TestPlayer/IdleState.gd" id="3_qepir"]
+[ext_resource type="Script" uid="uid://bohdm5prm122t" path="res://src/states/characters/TestPlayer/MovingState.gd" id="4_60e0f"]
+[ext_resource type="Script" uid="uid://3s2icb022fhv" path="res://src/states/characters/TestPlayer/JumpingState.gd" id="5_60e0f"]
+[ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
+[ext_resource type="Script" uid="uid://1dj3wtta8o5q" path="res://src/states/characters/TestPlayer/FallingState.gd" id="6_shdmu"]
+[ext_resource type="Script" uid="uid://cotsl56wc4dj4" path="res://src/characters/TestBot.gd" id="7_xw68a"]
+[ext_resource type="Script" uid="uid://63wstxxuiem6" path="res://src/states/characters/TestBot/WanderingState.gd" id="8_coggd"]
+[ext_resource type="Script" uid="uid://segyoa1x8o2p" path="res://src/states/State.gd" id="8_jtjdo"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
+normal = Vector2(1, 0)
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ajbhg"]
+normal = Vector2(-1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ajbhg"]
+size = Vector2(640, 96)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5xfj"]
+radius = 8.0
+height = 32.0
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsvvc"]
+radius = 8.0
+height = 32.0
+
+[node name="Game" type="Node" unique_id=1285932675]
+
+[node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
+
+[node name="LevelRoot" type="Node2D" parent="WorldRoot" unique_id=528319061]
+
+[node name="TestLevel" type="Node2D" parent="WorldRoot/LevelRoot" unique_id=1146135526]
+
+[node name="Border" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=1914319583]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/Border" unique_id=1424233476]
+shape = SubResource("WorldBoundaryShape2D_b5xfj")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/Border" unique_id=469184857]
+position = Vector2(640, 0)
+shape = SubResource("WorldBoundaryShape2D_ajbhg")
+
+[node name="Ground" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=46001906]
+position = Vector2(320, 264)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/Ground" unique_id=155765202]
+position = Vector2(0, 48)
+shape = SubResource("RectangleShape2D_ajbhg")
+
+[node name="EntityRoot" type="Node2D" parent="WorldRoot" unique_id=1770554558]
+
+[node name="TestPlayer" type="CharacterBody2D" parent="WorldRoot/EntityRoot" unique_id=942108854 groups=["Players"]]
+position = Vector2(32, 264)
+script = ExtResource("1_coggd")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/EntityRoot/TestPlayer" unique_id=137443781]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_b5xfj")
+
+[node name="StateMachine" type="Node" parent="WorldRoot/EntityRoot/TestPlayer" unique_id=2130192038]
+script = ExtResource("2_pxk5c")
+metadata/_custom_type_script = "uid://vgdvj58go04a"
+
+[node name="Idle" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=58626755]
+script = ExtResource("3_qepir")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="Moving" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=899852253]
+script = ExtResource("4_60e0f")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="Jumping" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=1569246247]
+script = ExtResource("5_60e0f")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="Falling" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=1953176002]
+script = ExtResource("6_shdmu")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="TestBot" type="CharacterBody2D" parent="WorldRoot/EntityRoot" unique_id=169574993]
+position = Vector2(608, 264)
+script = ExtResource("7_xw68a")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/EntityRoot/TestBot" unique_id=1202533682]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_fsvvc")
+
+[node name="StateMachine" type="Node" parent="WorldRoot/EntityRoot/TestBot" unique_id=508954928]
+script = ExtResource("2_pxk5c")
+metadata/_custom_type_script = "uid://vgdvj58go04a"
+
+[node name="Wandering" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=805366722]
+script = ExtResource("8_coggd")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="Chasing" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1376133766]
+script = ExtResource("8_jtjdo")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
+
+[node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1753897376]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="DataDisplay" type="VBoxContainer" parent="DebugLayer/DebugRoot" unique_id=877802488 node_paths=PackedStringArray("host")]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("5_ng5f3")
+host = NodePath("../../../WorldRoot/EntityRoot/TestBot")
+
+[node name="HostLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=472100485]
+layout_mode = 2
+text = "Host"
+
+[node name="StateLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=189893438]
+layout_mode = 2
+text = "State"
+
+[node name="PositionLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=1717918357]
+layout_mode = 2
+text = "Position"
