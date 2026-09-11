@@ -14,6 +14,8 @@ func physics_update(delta: float) -> void:
 	
 	if host.velocity.x == 0:
 		request.emit("Idle")
+	elif not host.is_on_floor() and host.velocity.y >= 0:
+		request.emit("Falling")
 	elif Input.is_action_just_pressed("Jump") and host.is_on_floor():
 		request.emit("Jumping")
 	elif Input.is_action_just_pressed("Attack"):
