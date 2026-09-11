@@ -15,4 +15,4 @@ func _physics_process(delta: float) -> void:
 	
 	host_label.text = "Host: %s" % host.name.to_pascal_case()
 	state_label.text = "State: %s" % host.state_machine.current_state.name.to_pascal_case()
-	position_label.text = "Position: %s" % str(host.global_position)
+	position_label.text = "Position: (%.2f, %.2f)" % [host.global_position.x, host.global_position.y]

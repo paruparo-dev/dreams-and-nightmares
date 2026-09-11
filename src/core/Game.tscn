@@ -9,7 +9,7 @@
 [ext_resource type="Script" uid="uid://1dj3wtta8o5q" path="res://src/states/characters/TestPlayer/FallingState.gd" id="6_shdmu"]
 [ext_resource type="Script" uid="uid://cotsl56wc4dj4" path="res://src/characters/TestBot.gd" id="7_xw68a"]
 [ext_resource type="Script" uid="uid://63wstxxuiem6" path="res://src/states/characters/TestBot/WanderingState.gd" id="8_coggd"]
-[ext_resource type="Script" uid="uid://segyoa1x8o2p" path="res://src/states/State.gd" id="8_jtjdo"]
+[ext_resource type="Script" uid="uid://btjxt5278jxqq" path="res://src/states/characters/TestBot/ChasingState.gd" id="9_coggd"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
 normal = Vector2(1, 0)
@@ -99,7 +99,7 @@ script = ExtResource("8_coggd")
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="Chasing" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1376133766]
-script = ExtResource("8_jtjdo")
+script = ExtResource("9_coggd")
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
