@@ -1,14 +1,17 @@
 [gd_scene format=3 uid="uid://dw8j77unvk2iq"]
 
 [ext_resource type="Script" uid="uid://cgg4cjh06ykk1" path="res://src/characters/TestPlayer.gd" id="1_coggd"]
+[ext_resource type="Texture2D" uid="uid://blhgq1a0bxwj6" path="res://assets/TestCharacterAttackSprite.png" id="2_0f264"]
 [ext_resource type="Script" uid="uid://vgdvj58go04a" path="res://src/core/StateMachine.gd" id="2_pxk5c"]
 [ext_resource type="Script" uid="uid://lm5uqueydjvu" path="res://src/states/characters/TestPlayer/IdleState.gd" id="3_qepir"]
 [ext_resource type="Script" uid="uid://bohdm5prm122t" path="res://src/states/characters/TestPlayer/MovingState.gd" id="4_60e0f"]
 [ext_resource type="Script" uid="uid://3s2icb022fhv" path="res://src/states/characters/TestPlayer/JumpingState.gd" id="5_60e0f"]
 [ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
 [ext_resource type="Script" uid="uid://1dj3wtta8o5q" path="res://src/states/characters/TestPlayer/FallingState.gd" id="6_shdmu"]
+[ext_resource type="Script" uid="uid://om6trek17uc7" path="res://src/states/characters/TestPlayer/AttackingState.gd" id="7_6xc33"]
 [ext_resource type="Script" uid="uid://cotsl56wc4dj4" path="res://src/characters/TestBot.gd" id="7_xw68a"]
 [ext_resource type="Script" uid="uid://63wstxxuiem6" path="res://src/states/characters/TestBot/WanderingState.gd" id="8_coggd"]
+[ext_resource type="Script" uid="uid://cwvi48olyemdg" path="res://src/gameplay/HitboxComponent.gd" id="8_etiq1"]
 [ext_resource type="Script" uid="uid://btjxt5278jxqq" path="res://src/states/characters/TestBot/ChasingState.gd" id="9_coggd"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
@@ -20,9 +23,107 @@ normal = Vector2(-1, 0)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajbhg"]
 size = Vector2(640, 96)
 
+[sub_resource type="AtlasTexture" id="AtlasTexture_0f264"]
+atlas = ExtResource("2_0f264")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4as8b"]
+atlas = ExtResource("2_0f264")
+region = Rect2(80, 0, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0a2i0"]
+atlas = ExtResource("2_0f264")
+region = Rect2(0, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_tatff"]
+atlas = ExtResource("2_0f264")
+region = Rect2(96, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_epph5"]
+atlas = ExtResource("2_0f264")
+region = Rect2(112, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_22yar"]
+atlas = ExtResource("2_0f264")
+region = Rect2(128, 16, 16, 16)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_saqgj"]
+atlas = ExtResource("2_0f264")
+region = Rect2(0, 0, 16, 16)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_b5xfj"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0f264")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4as8b")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0a2i0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tatff")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epph5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epph5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_epph5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_22yar")
+}],
+"loop": 0,
+"name": &"Attacking",
+"speed": 12.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_saqgj")
+}],
+"loop": 1,
+"name": &"Idle",
+"speed": 12.0
+}]
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5xfj"]
 radius = 8.0
 height = 32.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsvvc"]
+radius = 24.0
+
+[sub_resource type="Animation" id="Animation_etiq1"]
+resource_name = "Attack"
+length = 1.000008363135904
+step = 0.083333336
+tracks/0/type = "method"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("StateMachine/Attacking/HitboxComponent")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.25, 0.5833333),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [],
+"method": &"enable"
+}, {
+"args": [],
+"method": &"disable"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0f264"]
+_data = {
+&"Attacking": SubResource("Animation_etiq1")
+}
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_fsvvc"]
 radius = 8.0
@@ -46,10 +147,9 @@ position = Vector2(640, 0)
 shape = SubResource("WorldBoundaryShape2D_ajbhg")
 
 [node name="Ground" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=46001906]
-position = Vector2(320, 264)
+position = Vector2(320, 312)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/Ground" unique_id=155765202]
-position = Vector2(0, 48)
 shape = SubResource("RectangleShape2D_ajbhg")
 
 [node name="EntityRoot" type="Node2D" parent="WorldRoot" unique_id=1770554558]
@@ -57,6 +157,15 @@ shape = SubResource("RectangleShape2D_ajbhg")
 [node name="TestPlayer" type="CharacterBody2D" parent="WorldRoot/EntityRoot" unique_id=942108854 groups=["Players"]]
 position = Vector2(32, 264)
 script = ExtResource("1_coggd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="WorldRoot/EntityRoot/TestPlayer" unique_id=1058906809]
+texture_filter = 1
+position = Vector2(0, -16)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_b5xfj")
+animation = &"Attacking"
+frame = 7
+frame_progress = 1.0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/EntityRoot/TestPlayer" unique_id=137443781]
 position = Vector2(0, -16)
@@ -81,6 +190,23 @@ metadata/_custom_type_script = "uid://segyoa1x8o2p"
 [node name="Falling" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=1953176002]
 script = ExtResource("6_shdmu")
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="Attacking" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=334734851 node_paths=PackedStringArray("animation")]
+script = ExtResource("7_6xc33")
+animation = NodePath("../../AnimationPlayer")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="HitboxComponent" type="Area2D" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine/Attacking" unique_id=359013792]
+position = Vector2(32, 264)
+script = ExtResource("8_etiq1")
+metadata/_custom_type_script = "uid://cwvi48olyemdg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine/Attacking/HitboxComponent" unique_id=1309770683]
+position = Vector2(24, -16)
+shape = SubResource("CircleShape2D_fsvvc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="WorldRoot/EntityRoot/TestPlayer" unique_id=472718427]
+libraries/ = SubResource("AnimationLibrary_0f264")
 
 [node name="TestBot" type="CharacterBody2D" parent="WorldRoot/EntityRoot" unique_id=169574993]
 position = Vector2(608, 264)
@@ -117,7 +243,7 @@ layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ng5f3")
-host = NodePath("../../../WorldRoot/EntityRoot/TestBot")
+host = NodePath("../../../WorldRoot/EntityRoot/TestPlayer")
 
 [node name="HostLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=472100485]
 layout_mode = 2
