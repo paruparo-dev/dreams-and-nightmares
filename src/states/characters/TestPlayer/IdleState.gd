@@ -2,9 +2,15 @@ extends State
 
 
 func physics_update(delta: float) -> void:
+	host.velocity.y += host.get_gravity().y * delta
+	
 	var direction := Input.get_axis("MoveLeft", "MoveRight")
+	
+	host.flip_x(direction)
 	
 	if direction != 0:
 		request.emit("Moving")
-	elif Input.is_action_just_pressed("Jump"):
+	elif Input.is_action_just_pressed("Jump") and host.is_on_floor():
 		request.emit("Jumping")
+	elif Input.is_action_just_pressed("Attack"):
+		request.emit("Attacking")

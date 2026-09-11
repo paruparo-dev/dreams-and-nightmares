@@ -25,11 +25,3 @@ func physics_update(delta: float) -> void:
 		request.emit("Wandering")
 	else:
 		host.velocity.x = speed * direction
-		
-	Debug.log(Log.new()
-			.src(self)
-			.dict({
-				"target_pos": target_pos,
-				"direction": direction,
-				"distance": distance
-			}))
