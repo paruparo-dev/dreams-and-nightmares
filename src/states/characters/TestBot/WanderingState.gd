@@ -2,13 +2,14 @@ extends State
 
 
 @export var max_speed : float = 100
+@export var chase_distance : float = 100
 
 
 var target : Node2D
-var direction : int
-var distance : float
+var wander_direction : int
+var wander_distance : float
+var target_pos : Vector2
 var speed : float
-var target_x : float
 var idle_timer : float
 
 
@@ -27,35 +28,32 @@ func physics_update(delta: float) -> void:
 			
 		return
 	
-	var remaining_distance : float = (target_x - host.global_position.x) * direction
-	if remaining_distance <= 0:
+	var remaining_distance : float = target_pos.x - host.global_position.x
+	if remaining_distance * wander_direction <= 0:
 		host.velocity.x = 0
 		idle_timer = randf_range(1, 3)
 	else:
-		host.velocity.x = speed * direction
+		host.velocity.x = speed * wander_direction
 
 	for i in host.get_slide_collision_count():
 		var collision := host.get_slide_collision(i)
 		var normal := collision.get_normal()
 
-		if host.is_on_wall() and normal.x == -direction:
-			direction = sign(normal.x)
-			target_x = host.global_position.x + abs(target_x - host.global_position.x) * direction
+		if host.is_on_wall() and normal.x == -wander_direction:
+			wander_direction = sign(normal.x)
+			target_pos.x = host.global_position.x + remaining_distance * wander_direction
+			target_pos.y = host.global_position.y
+			
+	var target_direction : int = sign(host.global_position.direction_to(target.global_position).x)
+	var target_distance : float = (target.global_position.x - host.global_position.x)
+
+	if target_distance * target_direction <= chase_distance:
+		request.emit("Chasing")
 
 
 func _randomize() -> void:
-	direction = [-1, 1].pick_random()
-	
-	distance = randf_range(100, 300)
-
-	target_x = host.global_position.x + distance * direction
-	
+	wander_direction = [-1, 1].pick_random()
+	wander_distance = randf_range(100, 300)
+	target_pos.x = host.global_position.x + wander_distance * wander_direction
+	target_pos.y = host.global_position.y
 	speed = randf_range(0.6, 1) * max_speed
-
-	Debug.begin().dict(name, {
-		"direction": direction,
-		"distance": distance,
-		"host.global_position.x": host.global_position.x,
-		"target_x": target_x,
-		"speed": speed
-	}).end()
