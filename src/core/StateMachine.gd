@@ -17,9 +17,9 @@ func _ready() -> void:
 	for child in get_children():
 		if child is State:
 			var state := child as State
-			states[state.name.to_pascal_case()] = state
 			state.request.connect(transition_to)
 			state.host = host
+			states[state.name.to_pascal_case()] = state
 			
 	current_state = states.values()[0]
 	current_state.enter()
