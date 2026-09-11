@@ -2,13 +2,24 @@ extends State
 
 
 @export var animation : AnimationPlayer
+@export var attack_cooldown : float = 1
 
 
 @onready var hitbox : HitboxComponent = $HitboxComponent
 
 
 func enter() -> void:
+	if not host.can_attack():
+		request.emit("Idle")
+		return
+	
+	# host.attack_cd_timer = attack_cooldown
+	
+	if not host.is_on_floor():
+		host.aerial_attack_count += 1
+	
 	host.sprite.animation_finished.connect(_on_sprite_animation_finished)
+		
 	host.sprite.play("Attacking")
 	animation.play("Attacking")
 	
@@ -17,7 +28,8 @@ func enter() -> void:
 	
 	
 func exit() -> void:
-	host.sprite.animation_finished.disconnect(_on_sprite_animation_finished)
+	if host.sprite.animation_finished.is_connected(_on_sprite_animation_finished):
+		host.sprite.animation_finished.disconnect(_on_sprite_animation_finished)
 	host.sprite.stop()
 	animation.stop()
 	

@@ -13,6 +13,7 @@ func physics_update(delta: float) -> void:
 	host.flip_x(direction)
 
 	if host.is_on_floor():
+		host.aerial_attack_count = 0
 		request.emit("Idle")
-	# elif Input.is_action_just_pressed("Attack"):
-	# 	request.emit("Attacking")
+	elif Input.is_action_just_pressed("Attack"):
+		request.emit("Attacking")
