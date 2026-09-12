@@ -11,8 +11,10 @@
 [ext_resource type="Script" uid="uid://om6trek17uc7" path="res://src/states/characters/TestPlayer/AttackingState.gd" id="7_6xc33"]
 [ext_resource type="Script" uid="uid://cotsl56wc4dj4" path="res://src/characters/TestBot.gd" id="7_xw68a"]
 [ext_resource type="Script" uid="uid://63wstxxuiem6" path="res://src/states/characters/TestBot/WanderingState.gd" id="8_coggd"]
-[ext_resource type="Script" uid="uid://cwvi48olyemdg" path="res://src/gameplay/HitboxComponent.gd" id="8_etiq1"]
+[ext_resource type="Script" uid="uid://cwvi48olyemdg" path="res://src/gameplay/components/HitboxComponent.gd" id="8_etiq1"]
 [ext_resource type="Script" uid="uid://btjxt5278jxqq" path="res://src/states/characters/TestBot/ChasingState.gd" id="9_coggd"]
+[ext_resource type="Script" uid="uid://b0jut5n5qk35e" path="res://src/gameplay/components/HealthComponent.gd" id="13_4as8b"]
+[ext_resource type="Script" uid="uid://dluohf10cni5h" path="res://src/gameplay/components/HurtboxComponent.gd" id="13_saqgj"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
 normal = Vector2(1, 0)
@@ -129,6 +131,10 @@ _data = {
 radius = 8.0
 height = 32.0
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0gu1n"]
+radius = 8.0
+height = 32.0
+
 [node name="Game" type="Node" unique_id=1285932675]
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
@@ -194,6 +200,7 @@ metadata/_custom_type_script = "uid://segyoa1x8o2p"
 [node name="Attacking" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=334734851 node_paths=PackedStringArray("animation")]
 script = ExtResource("7_6xc33")
 animation = NodePath("../../AnimationPlayer")
+damage = 50.0
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="HitboxComponent" type="Area2D" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine/Attacking" unique_id=359013792]
@@ -204,6 +211,7 @@ metadata/_custom_type_script = "uid://cwvi48olyemdg"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine/Attacking/HitboxComponent" unique_id=1309770683]
 position = Vector2(24, -16)
 shape = SubResource("CircleShape2D_fsvvc")
+debug_color = Color(1, 0, 0, 0.41960785)
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="WorldRoot/EntityRoot/TestPlayer" unique_id=472718427]
 libraries/ = SubResource("AnimationLibrary_0f264")
@@ -227,6 +235,19 @@ metadata/_custom_type_script = "uid://segyoa1x8o2p"
 [node name="Chasing" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1376133766]
 script = ExtResource("9_coggd")
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="HealthComponent" type="Node" parent="WorldRoot/EntityRoot/TestBot" unique_id=1103450747]
+script = ExtResource("13_4as8b")
+metadata/_custom_type_script = "uid://b0jut5n5qk35e"
+
+[node name="HurtboxComponent" type="Area2D" parent="WorldRoot/EntityRoot/TestBot" unique_id=1162699577]
+script = ExtResource("13_saqgj")
+metadata/_custom_type_script = "uid://dluohf10cni5h"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/EntityRoot/TestBot/HurtboxComponent" unique_id=306727453]
+position = Vector2(0, -16)
+shape = SubResource("CapsuleShape2D_0gu1n")
+debug_color = Color(1, 1, 0, 0.41960785)
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
 

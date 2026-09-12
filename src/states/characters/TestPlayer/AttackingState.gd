@@ -2,6 +2,8 @@ extends State
 
 
 @export var animation : AnimationPlayer
+
+@export var damage : float = 10
 @export var attack_cooldown : float = 1
 
 
@@ -24,7 +26,8 @@ func enter() -> void:
 	animation.play("Attacking")
 	
 	host.velocity = Vector2.ZERO
-	hitbox.update(host.global_position, host.sprite_direction)
+	hitbox.damage = damage
+	hitbox.update_pos(host.global_position, host.sprite_direction)
 	
 	
 func exit() -> void:
