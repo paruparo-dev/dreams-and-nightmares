@@ -3,6 +3,9 @@ extends Area2D
 class_name HitboxComponent
 
 
+var damage : float
+
+
 @onready var collision : CollisionShape2D = $CollisionShape2D
 
 
@@ -20,6 +23,6 @@ func disable() -> void:
 	collision.disabled = true
 	
 	
-func update(pos: Vector2, dir: int) -> void:
+func update_pos(pos: Vector2, dir: int) -> void:
 	global_position = pos
 	scale.x = signi(dir)
