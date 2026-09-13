@@ -13,8 +13,10 @@
 [ext_resource type="Script" uid="uid://63wstxxuiem6" path="res://src/states/characters/TestBot/WanderingState.gd" id="8_coggd"]
 [ext_resource type="Script" uid="uid://cwvi48olyemdg" path="res://src/gameplay/components/HitboxComponent.gd" id="8_etiq1"]
 [ext_resource type="Script" uid="uid://btjxt5278jxqq" path="res://src/states/characters/TestBot/ChasingState.gd" id="9_coggd"]
+[ext_resource type="Script" uid="uid://dmoh8utsf3r0v" path="res://src/states/characters/TestBot/HitState.gd" id="13_0a2i0"]
 [ext_resource type="Script" uid="uid://b0jut5n5qk35e" path="res://src/gameplay/components/HealthComponent.gd" id="13_4as8b"]
 [ext_resource type="Script" uid="uid://dluohf10cni5h" path="res://src/gameplay/components/HurtboxComponent.gd" id="13_saqgj"]
+[ext_resource type="Script" uid="uid://d0sgt2v04ypwv" path="res://src/states/characters/TestBot/StunnedState.gd" id="14_ers3s"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
 normal = Vector2(1, 0)
@@ -200,7 +202,7 @@ metadata/_custom_type_script = "uid://segyoa1x8o2p"
 [node name="Attacking" type="Node" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine" unique_id=334734851 node_paths=PackedStringArray("animation")]
 script = ExtResource("7_6xc33")
 animation = NodePath("../../AnimationPlayer")
-damage = 50.0
+knockback = 500.0
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="HitboxComponent" type="Area2D" parent="WorldRoot/EntityRoot/TestPlayer/StateMachine/Attacking" unique_id=359013792]
@@ -234,6 +236,16 @@ metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="Chasing" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1376133766]
 script = ExtResource("9_coggd")
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="Hit" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1620107215]
+script = ExtResource("13_0a2i0")
+duration = 0.05
+metadata/_custom_type_script = "uid://segyoa1x8o2p"
+
+[node name="Stunned" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=687766898]
+script = ExtResource("14_ers3s")
+duration = 1.0
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="HealthComponent" type="Node" parent="WorldRoot/EntityRoot/TestBot" unique_id=1103450747]

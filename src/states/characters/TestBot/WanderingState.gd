@@ -13,7 +13,7 @@ var speed : float
 var idle_timer : float
 
 
-func enter() -> void:
+func enter(data: Variant = null) -> void:
 	target = get_tree().get_first_node_in_group("Players")
 
 	_randomize()

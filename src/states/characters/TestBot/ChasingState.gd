@@ -10,7 +10,7 @@ var target : Node2D
 var target_x : float
 
 
-func enter() -> void:
+func enter(data: Variant = null) -> void:
 	target = get_tree().get_first_node_in_group("Players")
 	
 	

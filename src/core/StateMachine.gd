@@ -31,7 +31,7 @@ func _physics_process(delta: float) -> void:
 	current_state.physics_update(delta)
 
 
-func transition_to(state_name: String) -> void:
+func transition_to(state_name: String, data: Variant = null) -> void:
 	state_name = state_name.to_pascal_case()
 	
 	if not states.has(state_name):
@@ -44,6 +44,6 @@ func transition_to(state_name: String) -> void:
 	
 	current_state.exit()
 	current_state = new_state
-	current_state.enter()
+	current_state.enter(data)
 	
 	state_changed.emit(state_name)

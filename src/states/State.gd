@@ -9,7 +9,7 @@ signal request(state_name: String)
 var host : CharacterBody2D
 
 
-func enter() -> void:
+func enter(data: Variant = null) -> void:
 	pass
 
 

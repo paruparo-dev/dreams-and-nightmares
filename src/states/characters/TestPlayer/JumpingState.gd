@@ -5,7 +5,7 @@ extends State
 @export var strength : float = 400
 
 
-func enter() -> void:
+func enter(data: Variant = null) -> void:
 	host.velocity.y = -strength
 	
 	
