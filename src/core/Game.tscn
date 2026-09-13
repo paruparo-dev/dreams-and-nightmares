@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dw8j77unvk2iq"]
 
 [ext_resource type="Script" uid="uid://cgg4cjh06ykk1" path="res://src/characters/TestPlayer.gd" id="1_coggd"]
+[ext_resource type="Script" uid="uid://d2wmaegettptm" path="res://src/core/Game.gd" id="1_tatff"]
 [ext_resource type="Texture2D" uid="uid://blhgq1a0bxwj6" path="res://assets/TestCharacterAttackSprite.png" id="2_0f264"]
 [ext_resource type="Script" uid="uid://vgdvj58go04a" path="res://src/core/StateMachine.gd" id="2_pxk5c"]
 [ext_resource type="Script" uid="uid://lm5uqueydjvu" path="res://src/states/characters/TestPlayer/IdleState.gd" id="3_qepir"]
@@ -138,6 +139,7 @@ radius = 8.0
 height = 32.0
 
 [node name="Game" type="Node" unique_id=1285932675]
+script = ExtResource("1_tatff")
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
 
