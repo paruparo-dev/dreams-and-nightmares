@@ -10,8 +10,13 @@ class_name TestBot
 
 func _ready() -> void:
 	health.died.connect(queue_free)
-	hurtbox.hurt.connect(health.take_damage)
+	hurtbox.hurt.connect(_on_hurt)
 
 
 func _physics_process(delta: float) -> void:
 	move_and_slide()
+	
+	
+func _on_hurt(hitbox: HitboxComponent) -> void:
+	health.take_damage(hitbox.damage)
+	state_machine.transition_to("Hit", hitbox)
