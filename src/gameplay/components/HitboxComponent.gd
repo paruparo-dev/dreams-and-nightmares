@@ -4,6 +4,7 @@ class_name HitboxComponent
 
 
 var damage : float
+var knockback : float
 
 
 @onready var collision : CollisionShape2D = $CollisionShape2D
