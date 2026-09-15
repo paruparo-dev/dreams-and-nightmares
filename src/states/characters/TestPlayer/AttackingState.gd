@@ -11,7 +11,7 @@ extends State
 @onready var hitbox : HitboxComponent = $HitboxComponent
 
 
-func enter(data: Variant = null) -> void:
+func enter(_data: Variant = null) -> void:
 	if not host.can_attack():
 		request.emit("Idle")
 		return

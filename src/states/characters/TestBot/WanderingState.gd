@@ -13,15 +13,15 @@ var speed : float
 var idle_timer : float
 
 
-func enter(data: Variant = null) -> void:
+func enter(_data: Variant = null) -> void:
 	target = get_tree().get_first_node_in_group("Players")
 
 	_randomize()
 
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if idle_timer > 0:
-		idle_timer -= delta
+		idle_timer -= _delta
 		
 		if idle_timer <= 0:
 			_randomize()

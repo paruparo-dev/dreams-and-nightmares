@@ -12,12 +12,13 @@ var aerial_attack_count : int
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 
 
-func _process(delta: float) -> void:
+
+func _process(_delta: float) -> void:
 	if attack_cd_timer > 0:
-		attack_cd_timer -= delta
+		attack_cd_timer -= _delta
 
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	
