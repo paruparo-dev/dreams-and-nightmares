@@ -15,6 +15,8 @@ var face_direction : int = 1
 func _ready() -> void:
 	health.died.connect(queue_free)
 	hurtbox.hurt.connect(_on_hurt)
+	
+	state_machine.transition_to("Wandering")
 
 
 func _physics_process(_delta: float) -> void:

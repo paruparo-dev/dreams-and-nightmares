@@ -17,6 +17,8 @@ var aerial_attack_count : int
 func _ready() -> void:
 	health.died.connect(queue_free)
 	hurtbox.hurt.connect(_on_hurt)
+	
+	state_machine.transition_to("Idle")
 
 
 func _process(_delta: float) -> void:

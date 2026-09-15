@@ -20,11 +20,6 @@ func _ready() -> void:
 			state.request.connect(transition_to)
 			state.host = host
 			states[state.name.to_pascal_case()] = state
-			
-	current_state = states.values()[0]
-	current_state.enter()
-
-	state_changed.emit(current_state.name.to_pascal_case())
 
 
 func _physics_process(_delta: float) -> void:
@@ -42,7 +37,9 @@ func transition_to(state_name: String, data: Variant = null) -> void:
 	if current_state == new_state:
 		return
 	
-	current_state.exit()
+	if current_state != null:
+		current_state.exit()
+		
 	current_state = new_state
 	current_state.enter(data)
 	
