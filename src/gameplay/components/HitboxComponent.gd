@@ -17,12 +17,12 @@ func _ready() -> void:
 
 func enable() -> void:
 	monitoring = true
-	collision.disabled = false
+	collision.set_deferred("disabled", false)
 	
 
 func disable() -> void:
 	monitoring = false
-	collision.disabled = true
+	collision.set_deferred("disabled", true)
 	
 	
 func update_pos(pos: Vector2, dir: int) -> void:
