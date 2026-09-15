@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name TestPlayer
 
 
-var sprite_direction : int = 1
+var face_direction : int = 1
 var attack_cd_timer : float
 var aerial_attack_count : int
 

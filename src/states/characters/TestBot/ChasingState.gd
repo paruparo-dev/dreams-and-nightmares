@@ -18,6 +18,9 @@ func physics_update(_delta: float) -> void:
 	var target_pos : Vector2 = target.global_position
 	var direction : int = sign(host.global_position.direction_to(target_pos).x)
 	var distance : float = (target_pos.x - host.global_position.x)
+	var direction : int = sign(distance)
+
+	host.flip_x(direction)
 	
 	if distance * direction <= stop_distance:
 		host.velocity.x = 0

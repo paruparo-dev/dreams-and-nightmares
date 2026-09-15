@@ -27,6 +27,8 @@ func physics_update(_delta: float) -> void:
 			_randomize()
 			
 		return
+
+	host.flip_x(wander_direction)
 	
 	var remaining_distance : float = target_pos.x - host.global_position.x
 	if remaining_distance * wander_direction <= 0:
@@ -46,6 +48,7 @@ func physics_update(_delta: float) -> void:
 			
 	var target_direction : int = sign(host.global_position.direction_to(target.global_position).x)
 	var target_distance : float = (target.global_position.x - host.global_position.x)
+	var target_direction : int = sign(target_distance)
 
 	if target_distance * target_direction <= chase_distance:
 		request.emit("Chasing")

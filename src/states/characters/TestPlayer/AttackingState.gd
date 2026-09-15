@@ -30,7 +30,7 @@ func enter(_data: Variant = null) -> void:
 	hitbox.source = host
 	hitbox.damage = damage
 	hitbox.knockback = knockback
-	hitbox.update_pos(host.global_position, host.sprite_direction)
+	hitbox.update_pos(host.global_position, host.face_direction)
 	
 	
 func exit() -> void:
@@ -38,6 +38,7 @@ func exit() -> void:
 		host.sprite.animation_finished.disconnect(_on_sprite_animation_finished)
 	host.sprite.stop()
 	animation.stop()
+	hitbox.disable()
 	
 	
 func _on_sprite_animation_finished() -> void:
