@@ -2,7 +2,7 @@ extends State
 
 
 @export var max_speed : float = 100
-@export var chase_distance : float = 100
+@export var chase_distance : float = 150
 
 
 var target : Node2D
@@ -45,8 +45,10 @@ func physics_update(_delta: float) -> void:
 			wander_direction = sign(normal.x)
 			target_pos.x = host.global_position.x + remaining_distance * wander_direction
 			target_pos.y = host.global_position.y
-			
-	var target_direction : int = sign(host.global_position.direction_to(target.global_position).x)
+
+	if target == null:
+		return
+	
 	var target_distance : float = (target.global_position.x - host.global_position.x)
 	var target_direction : int = sign(target_distance)
 
