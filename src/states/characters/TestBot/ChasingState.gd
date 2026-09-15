@@ -7,7 +7,7 @@ extends State
 @export var lose_distance : float = 200
 
 
-var target : Node2D
+var target : Character
 var target_x : float
 
 

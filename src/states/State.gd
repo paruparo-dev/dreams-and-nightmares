@@ -7,7 +7,7 @@ class_name State
 signal request(state_name: String)
 
 
-var host : CharacterBody2D
+var host : Character
 
 
 func enter(_data: Variant = null) -> void:

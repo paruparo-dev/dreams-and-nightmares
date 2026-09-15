@@ -5,7 +5,7 @@ extends State
 @export var chase_distance : float = 150
 
 
-var target : Node2D
+var target : Character
 var wander_direction : int
 var wander_distance : float
 var target_pos : Vector2

@@ -1,7 +1,7 @@
 extends VBoxContainer
 
 
-@export var host : Node2D
+@export var host : Character
 
 
 @onready var host_label : Label = $HostLabel

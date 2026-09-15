@@ -10,7 +10,7 @@ var states : Dictionary = {}
 var current_state : State
 
 
-@onready var host : Node2D = get_parent()
+@onready var host : Character = get_parent()
 
 
 func _ready() -> void:

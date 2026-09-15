@@ -6,7 +6,7 @@ class_name HurtboxComponent
 signal hurt(hitbox: HitboxComponent)
 
 
-@onready var host : CharacterBody2D = get_parent()
+@onready var host : Character = get_parent()
 
 
 func _ready() -> void:
