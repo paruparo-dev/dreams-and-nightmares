@@ -27,6 +27,7 @@ func enter(_data: Variant = null) -> void:
 	animation.play("Attacking")
 	
 	host.velocity = Vector2.ZERO
+	hitbox.source = host
 	hitbox.damage = damage
 	hitbox.knockback = knockback
 	hitbox.update_pos(host.global_position, host.sprite_direction)
