@@ -330,8 +330,9 @@ metadata/_custom_type_script = "uid://vgdvj58go04a"
 script = ExtResource("8_coggd")
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
-[node name="Chasing" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1376133766]
+[node name="Chasing" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1376133766 node_paths=PackedStringArray("hitbox")]
 script = ExtResource("9_coggd")
+hitbox = NodePath("../Attacking/HitboxComponent")
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="Hit" type="Node" parent="WorldRoot/EntityRoot/TestBot/StateMachine" unique_id=1620107215]

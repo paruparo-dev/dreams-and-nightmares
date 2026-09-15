@@ -1,10 +1,10 @@
 extends State
 
 
+@export var hitbox : HitboxComponent
 @export var speed : float = 100
 @export var stop_distance : float = 20
 @export var lose_distance : float = 200
-@export var attack_distance : float = 50
 
 
 var target : Node2D
@@ -21,6 +21,8 @@ func physics_update(_delta: float) -> void:
 	var direction : int = sign(distance)
 
 	host.flip_x(direction)
+	
+	var attack_distance = hitbox.collision.shape.radius * 2
 	
 	if distance * direction <= stop_distance:
 		host.velocity.x = 0
