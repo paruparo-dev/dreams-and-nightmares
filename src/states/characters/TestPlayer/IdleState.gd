@@ -1,8 +1,8 @@
 extends State
 
 
-func physics_update(delta: float) -> void:
-	host.velocity.y += host.get_gravity().y * delta
+func physics_update(_delta: float) -> void:
+	host.velocity.y += host.get_gravity().y * _delta
 	
 	var direction := Input.get_axis("MoveLeft", "MoveRight")
 	

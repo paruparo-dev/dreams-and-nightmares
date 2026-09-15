@@ -7,14 +7,14 @@ extends State
 var timer : float
 
 
-func enter(data: Variant = null) -> void:
-	host.velocity.x = data.knockback * signi(host.global_position.x - data.global_position.x)
+func enter(_data: Variant = null) -> void:
+	host.velocity.x = _data.knockback * signi(host.global_position.x - _data.global_position.x)
 	timer = duration
 	
 	
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	if timer > 0:
-		timer -= delta
+		timer -= _delta
 		
 		if timer <= 0:
 			request.emit("Stunned")

@@ -27,8 +27,8 @@ func _ready() -> void:
 	state_changed.emit(current_state.name.to_pascal_case())
 
 
-func _physics_process(delta: float) -> void:
-	current_state.physics_update(delta)
+func _physics_process(_delta: float) -> void:
+	current_state.physics_update(_delta)
 
 
 func transition_to(state_name: String, data: Variant = null) -> void:

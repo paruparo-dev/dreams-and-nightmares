@@ -9,7 +9,7 @@ signal request(state_name: String)
 var host : CharacterBody2D
 
 
-func enter(data: Variant = null) -> void:
+func enter(_data: Variant = null) -> void:
 	pass
 
 
@@ -17,5 +17,5 @@ func exit() -> void:
 	pass
 
 
-func physics_update(delta: float) -> void:
+func physics_update(_delta: float) -> void:
 	pass
