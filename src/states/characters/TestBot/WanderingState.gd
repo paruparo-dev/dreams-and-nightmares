@@ -17,6 +17,8 @@ func enter(_data: Variant = null) -> void:
 	target = get_tree().get_first_node_in_group("Players")
 
 	_randomize()
+	
+	host.sprite.play("Wandering")
 
 
 func physics_update(_delta: float) -> void:

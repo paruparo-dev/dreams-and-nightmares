@@ -6,6 +6,7 @@ class_name TestBot
 var face_direction : int = 1
 
 
+@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
 @onready var state_machine : StateMachine = $StateMachine
 @onready var health : HealthComponent = $HealthComponent
 @onready var hurtbox : HurtboxComponent = $HurtboxComponent
@@ -25,7 +26,7 @@ func flip_x(direction: int) -> void:
 		return
 
 	face_direction = signi(direction)
-	# sprite.flip_h = face_direction < 1
+	sprite.flip_h = face_direction < 1
 	
 	
 func _on_hurt(hitbox: HitboxComponent) -> void:

@@ -12,8 +12,9 @@ extends State
 
 
 func enter(_data: Variant = null) -> void:
-	animation.animation_finished.connect(_on_sprite_animation_finished)
+	host.sprite.animation_finished.connect(_on_sprite_animation_finished)
 	
+	host.sprite.play("Attacking")
 	animation.play("Attacking")
 	
 	host.velocity = Vector2.ZERO
@@ -24,11 +25,12 @@ func enter(_data: Variant = null) -> void:
 	
 
 func exit() -> void:
-	if animation.animation_finished.is_connected(_on_sprite_animation_finished):
-		animation.animation_finished.disconnect(_on_sprite_animation_finished)
+	if host.sprite.animation_finished.is_connected(_on_sprite_animation_finished):
+		host.sprite.animation_finished.disconnect(_on_sprite_animation_finished)
+	host.sprite.stop()
 	animation.stop()
 	hitbox.disable()
 	
 
-func _on_sprite_animation_finished(string: String) -> void:
+func _on_sprite_animation_finished() -> void:
 	request.emit("Chasing")
