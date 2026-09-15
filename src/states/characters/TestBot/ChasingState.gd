@@ -2,8 +2,9 @@ extends State
 
 
 @export var speed : float = 100
-@export var stop_distance : float = 30
+@export var stop_distance : float = 20
 @export var lose_distance : float = 200
+@export var attack_distance : float = 50
 
 
 var target : Node2D
@@ -16,7 +17,6 @@ func enter(_data: Variant = null) -> void:
 	
 func physics_update(_delta: float) -> void:
 	var target_pos : Vector2 = target.global_position
-	var direction : int = sign(host.global_position.direction_to(target_pos).x)
 	var distance : float = (target_pos.x - host.global_position.x)
 	var direction : int = sign(distance)
 
@@ -26,5 +26,7 @@ func physics_update(_delta: float) -> void:
 		host.velocity.x = 0
 	elif distance * direction >= lose_distance:
 		request.emit("Wandering")
+	elif distance * direction <= attack_distance:
+		request.emit("Attacking")
 	else:
 		host.velocity.x = speed * direction
