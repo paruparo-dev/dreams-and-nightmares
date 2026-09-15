@@ -3,6 +3,7 @@ extends Area2D
 class_name HitboxComponent
 
 
+var source : CharacterBody2D
 var damage : float
 var knockback : float
 
