@@ -3,7 +3,7 @@ extends Area2D
 class_name HurtboxComponent
 
 
-signal hurt(hitbox: HitboxComponent)
+signal hit(hitbox: HitboxComponent)
 
 
 @onready var host : Character = get_parent()
@@ -19,5 +19,5 @@ func _on_area_entered(area: Area2D) -> void:
 	
 	if area.source == host:
 		return
-	
-	hurt.emit(area)
+
+	hit.emit(area)
