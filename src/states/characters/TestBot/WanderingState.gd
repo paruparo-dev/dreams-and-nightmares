@@ -22,10 +22,20 @@ func enter(_data: Variant = null) -> void:
 
 
 func physics_update(_delta: float) -> void:
+	if target != null:
+		var target_distance : float = (target.global_position.x - host.global_position.x)
+		var target_direction : int = sign(target_distance)
+	
+		if target_distance * target_direction <= chase_distance:
+			request.emit("Chasing")
+			return
+		
 	if idle_timer > 0:
 		idle_timer -= _delta
 		
-		if idle_timer <= 0:
+		host.velocity.x = 0
+		
+		if idle_timer <= 0 and randf() >= 0.9:
 			_randomize()
 			
 		return
@@ -35,7 +45,7 @@ func physics_update(_delta: float) -> void:
 	var remaining_distance : float = target_pos.x - host.global_position.x
 	if remaining_distance * wander_direction <= 0:
 		host.velocity.x = 0
-		idle_timer = randf_range(1, 3)
+		idle_timer = randi_range(3, 5)
 	else:
 		host.velocity.x = speed * wander_direction
 
@@ -47,15 +57,6 @@ func physics_update(_delta: float) -> void:
 			wander_direction = sign(normal.x)
 			target_pos.x = host.global_position.x + remaining_distance * wander_direction
 			target_pos.y = host.global_position.y
-
-	if target == null:
-		return
-	
-	var target_distance : float = (target.global_position.x - host.global_position.x)
-	var target_direction : int = sign(target_distance)
-
-	if target_distance * target_direction <= chase_distance:
-		request.emit("Chasing")
 
 
 func _randomize() -> void:
