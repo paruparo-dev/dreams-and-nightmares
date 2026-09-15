@@ -10,7 +10,13 @@ var aerial_attack_count : int
 
 @onready var state_machine : StateMachine = $StateMachine
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var health : HealthComponent = $HealthComponent
+@onready var hurtbox : HurtboxComponent = $HurtboxComponent
 
+
+func _ready() -> void:
+	health.died.connect(queue_free)
+	hurtbox.hurt.connect(_on_hurt)
 
 
 func _process(_delta: float) -> void:
@@ -35,6 +41,11 @@ func can_attack() -> bool:
 func flip_x(direction: int) -> void:
 	if direction == 0:
 		return
-	
-	sprite_direction = signi(direction)
-	sprite.flip_h = sprite_direction < 1
+
+	face_direction = signi(direction)
+	sprite.flip_h = face_direction < 1
+
+
+func _on_hurt(hitbox: HitboxComponent) -> void:
+	health.take_damage(hitbox.damage)
+	state_machine.transition_to("Hit", hitbox)
