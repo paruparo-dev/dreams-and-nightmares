@@ -8,8 +8,8 @@ var attack_cd_timer : float
 var aerial_attack_count : int
 
 
-@onready var state_machine : StateMachine = $StateMachine
 @onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
+@onready var state_machine : StateMachine = $StateMachine
 @onready var health : HealthComponent = $HealthComponent
 @onready var hurtbox : HurtboxComponent = $HurtboxComponent
 
