@@ -1,6 +1,10 @@
 extends State
 
 
+func enter(_data: Variant = null) -> void:
+	host.sprite.play("Idle")
+
+
 func physics_update(_delta: float) -> void:
 	host.velocity.y += host.get_gravity().y * _delta
 	
