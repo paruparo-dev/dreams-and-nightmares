@@ -17,6 +17,6 @@ func physics_update(_delta: float) -> void:
 		timer -= _delta
 		
 		if timer <= 0:
-			request.emit("Wandering")
+			request.emit("Chasing")
 		
 		return
