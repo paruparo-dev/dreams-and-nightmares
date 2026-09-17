@@ -11,11 +11,17 @@
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
 normal = Vector2(1, 0)
 
-[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ajbhg"]
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_shdmu"]
 normal = Vector2(-1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ajbhg"]
 size = Vector2(640, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b5xfj"]
+size = Vector2(64, 16)
+
+[sub_resource type="LabelSettings" id="LabelSettings_ng5f3"]
+font_size = 8
 
 [node name="Game" type="Node" unique_id=1285932675]
 script = ExtResource("1_tatff")
@@ -32,20 +38,105 @@ speed = 250.0
 
 [node name="TestLevel" type="Node2D" parent="WorldRoot/LevelRoot" unique_id=1146135526]
 
-[node name="Border" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=1914319583]
+[node name="LeftBorder" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=1914319583]
+position = Vector2(0, 192)
+collision_layer = 4
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/Border" unique_id=1424233476]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/LeftBorder" unique_id=1424233476]
 shape = SubResource("WorldBoundaryShape2D_b5xfj")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/Border" unique_id=469184857]
-position = Vector2(640, 0)
-shape = SubResource("WorldBoundaryShape2D_ajbhg")
+[node name="RightBorder" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=1350595953]
+position = Vector2(640, 192)
+collision_layer = 4
+collision_mask = 3
 
-[node name="Ground" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=46001906]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/RightBorder" unique_id=1971678381]
+shape = SubResource("WorldBoundaryShape2D_shdmu")
+
+[node name="EnvironmentRoot" type="Node2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=355427441]
+
+[node name="Ground" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=46001906]
 position = Vector2(320, 312)
+collision_layer = 4
+collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/Ground" unique_id=155765202]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Ground" unique_id=155765202]
 shape = SubResource("RectangleShape2D_ajbhg")
+
+[node name="Platform" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=1799969232]
+position = Vector2(128, 200)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform" unique_id=978190391]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="Platform2" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=1302359930]
+position = Vector2(288, 200)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform2" unique_id=948636864]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="Platform3" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=365367590]
+position = Vector2(256, 136)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform3" unique_id=1524698594]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="Platform4" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=336995463]
+position = Vector2(416, 136)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform4" unique_id=473010102]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="Platform5" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=2091912778]
+position = Vector2(320, 72)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform5" unique_id=1176032475]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="Platform6" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=1253450500]
+position = Vector2(576, 136)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform6" unique_id=1563440143]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="Platform7" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=1523165381]
+position = Vector2(512, 200)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform7" unique_id=630417437]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="Platform8" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=66168555]
+position = Vector2(96, 72)
+collision_layer = 4
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot/Platform8" unique_id=1293885273]
+shape = SubResource("RectangleShape2D_b5xfj")
+one_way_collision = true
+
+[node name="ObstaclesRoot" type="Node2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=1669268345]
 
 [node name="EntityRoot" type="Node2D" parent="WorldRoot" unique_id=1770554558]
 
@@ -53,7 +144,7 @@ shape = SubResource("RectangleShape2D_ajbhg")
 position = Vector2(32, 264)
 skills_hud = NodePath("../../../HudLayer/HudRoot/SkillsHud")
 
-[node name="TestBot" parent="WorldRoot/EntityRoot" unique_id=1579723341 instance=ExtResource("3_rongd")]
+[node name="TestBot" parent="WorldRoot/EntityRoot" unique_id=1579723341 instance=ExtResource("4_shdmu")]
 position = Vector2(608, 264)
 
 [node name="HudLayer" type="CanvasLayer" parent="." unique_id=2142341151]
@@ -110,6 +201,7 @@ texture_filter = 1
 layout_mode = 2
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
+layer = 1000
 
 [node name="DebugRoot" type="Control" parent="DebugLayer" unique_id=1753897376]
 layout_mode = 3
@@ -120,7 +212,7 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="DataDisplay" type="VBoxContainer" parent="DebugLayer/DebugRoot" unique_id=877802488 node_paths=PackedStringArray("host")]
-layout_mode = 0
+layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("5_ng5f3")
@@ -129,15 +221,19 @@ host = NodePath("../../../WorldRoot/EntityRoot/TestBot")
 [node name="HostLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=472100485]
 layout_mode = 2
 text = "Host"
+label_settings = SubResource("LabelSettings_ng5f3")
 
 [node name="StateLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=189893438]
 layout_mode = 2
 text = "State"
+label_settings = SubResource("LabelSettings_ng5f3")
 
 [node name="PositionLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=1717918357]
 layout_mode = 2
 text = "Position"
+label_settings = SubResource("LabelSettings_ng5f3")
 
 [node name="DirectionLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=329698966]
 layout_mode = 2
 text = "Direction"
+label_settings = SubResource("LabelSettings_ng5f3")
