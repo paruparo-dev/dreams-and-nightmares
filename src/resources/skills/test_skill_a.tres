@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SkillData" format=3 uid="uid://gjrbrp4jecii"]
+
+[ext_resource type="Texture2D" uid="uid://cx0yiedhdlspg" path="res://assets/test_skill_a_icon.png" id="1_67rhs"]
+[ext_resource type="Script" uid="uid://bhgqk86nclp4k" path="res://src/resources/SkillData.gd" id="1_ij1f4"]
+
+[resource]
+script = ExtResource("1_ij1f4")
+id = "a"
+name = "Skill A"
+icon = ExtResource("1_67rhs")
+metadata/_custom_type_script = "uid://bhgqk86nclp4k"

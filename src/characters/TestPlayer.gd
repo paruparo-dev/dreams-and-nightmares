@@ -3,12 +3,16 @@ extends Character
 class_name TestPlayer
 
 
+@export var skills_hud : SkillsHud
+
+
 var attack_cd_timer : float
 var aerial_attack_count : int
 
 
 @onready var health : HealthComponent = $HealthComponent
 @onready var hurtbox : HurtboxComponent = $HurtboxComponent
+@onready var skills : SkillsComponent = $SkillsComponent
 
 
 func _ready() -> void:
@@ -16,6 +20,9 @@ func _ready() -> void:
 	hurtbox.hit.connect(_on_hit)
 	
 	state_machine.transition_to("Idle")
+
+	# remove this later and use independent player and UI binding class
+	skills_hud.bind(skills)
 
 
 func _process(_delta: float) -> void:

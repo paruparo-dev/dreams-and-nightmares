@@ -2,7 +2,9 @@
 
 [ext_resource type="Script" uid="uid://d2wmaegettptm" path="res://src/core/Game.gd" id="1_tatff"]
 [ext_resource type="PackedScene" uid="uid://86n0vuwpeelh" path="res://src/characters/TestPlayer.tscn" id="2_saqgj"]
-[ext_resource type="PackedScene" uid="uid://b36jvduu53yjt" path="res://src/characters/TestBot.tscn" id="3_rongd"]
+[ext_resource type="Script" uid="uid://b0vtlcpwlg1pc" path="res://src/ui/SkillsHud.gd" id="4_ng5f3"]
+[ext_resource type="PackedScene" uid="uid://b36jvduu53yjt" path="res://src/characters/TestBot.tscn" id="4_shdmu"]
+[ext_resource type="Script" uid="uid://dvy8ntoy40d0y" path="res://src/ui/SkillSlot.gd" id="5_60e0f"]
 [ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
@@ -40,11 +42,65 @@ shape = SubResource("RectangleShape2D_ajbhg")
 
 [node name="EntityRoot" type="Node2D" parent="WorldRoot" unique_id=1770554558]
 
-[node name="TestPlayer" parent="WorldRoot/EntityRoot" unique_id=2132633043 instance=ExtResource("2_saqgj")]
+[node name="TestPlayer" parent="WorldRoot/EntityRoot" unique_id=2132633043 node_paths=PackedStringArray("skills_hud") instance=ExtResource("2_saqgj")]
 position = Vector2(32, 264)
+skills_hud = NodePath("../../../HudLayer/HudRoot/SkillsHud")
 
 [node name="TestBot" parent="WorldRoot/EntityRoot" unique_id=1579723341 instance=ExtResource("3_rongd")]
 position = Vector2(608, 264)
+
+[node name="HudLayer" type="CanvasLayer" parent="." unique_id=2142341151]
+layer = 20
+
+[node name="HudRoot" type="Control" parent="HudLayer" unique_id=1775597548]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SkillsHud" type="HBoxContainer" parent="HudLayer/HudRoot" unique_id=981485768]
+custom_minimum_size = Vector2(150, 50)
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -40.0
+offset_top = -40.0
+grow_horizontal = 0
+grow_vertical = 0
+alignment = 1
+script = ExtResource("4_ng5f3")
+
+[node name="SkillSlot" type="PanelContainer" parent="HudLayer/HudRoot/SkillsHud" unique_id=393738680]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("5_60e0f")
+
+[node name="Icon" type="TextureRect" parent="HudLayer/HudRoot/SkillsHud/SkillSlot" unique_id=1462620805]
+texture_filter = 1
+layout_mode = 2
+
+[node name="SkillSlot2" type="PanelContainer" parent="HudLayer/HudRoot/SkillsHud" unique_id=835409708]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("5_60e0f")
+
+[node name="Icon" type="TextureRect" parent="HudLayer/HudRoot/SkillsHud/SkillSlot2" unique_id=38179610]
+texture_filter = 1
+layout_mode = 2
+
+[node name="SkillSlot3" type="PanelContainer" parent="HudLayer/HudRoot/SkillsHud" unique_id=655447665]
+custom_minimum_size = Vector2(50, 50)
+layout_mode = 2
+script = ExtResource("5_60e0f")
+
+[node name="Icon" type="TextureRect" parent="HudLayer/HudRoot/SkillsHud/SkillSlot3" unique_id=141708140]
+texture_filter = 1
+layout_mode = 2
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
 
