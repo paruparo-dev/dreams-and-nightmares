@@ -13,6 +13,11 @@
 [ext_resource type="Script" uid="uid://cry6sku51vfo2" path="res://src/states/characters/TestPlayer/HitState.gd" id="10_nvfkx"]
 [ext_resource type="Script" uid="uid://dluohf10cni5h" path="res://src/gameplay/components/HurtboxComponent.gd" id="11_1ttnb"]
 [ext_resource type="Script" uid="uid://c1tm8scuyesdk" path="res://src/states/characters/TestPlayer/StunnedState.gd" id="11_g7itr"]
+[ext_resource type="Script" uid="uid://dwfjopolbsvgq" path="res://src/gameplay/components/SkillsComponent.gd" id="14_g7itr"]
+[ext_resource type="Script" uid="uid://bhgqk86nclp4k" path="res://src/resources/SkillData.gd" id="15_oon4j"]
+[ext_resource type="Resource" uid="uid://gjrbrp4jecii" path="res://src/resources/skills/test_skill_a.tres" id="16_ixums"]
+[ext_resource type="Resource" uid="uid://b0xg3w710tnsh" path="res://src/resources/skills/test_skill_b.tres" id="17_6k1fq"]
+[ext_resource type="Resource" uid="uid://ksy62hibfhkl" path="res://src/resources/skills/test_skill_c.tres" id="18_1ttnb"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5xfj"]
 radius = 8.0
@@ -180,13 +185,6 @@ metadata/_custom_type_script = "uid://segyoa1x8o2p"
 script = ExtResource("11_g7itr")
 metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
-[node name="HealthComponent" type="Node" parent="." unique_id=1910900014]
-script = ExtResource("10_6k1fq")
-metadata/_custom_type_script = "uid://b0jut5n5qk35e"
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=260116546]
-libraries/ = SubResource("AnimationLibrary_0f264")
-
 [node name="HurtboxComponent" type="Area2D" parent="." unique_id=365864621]
 script = ExtResource("11_1ttnb")
 metadata/_custom_type_script = "uid://dluohf10cni5h"
@@ -195,3 +193,12 @@ metadata/_custom_type_script = "uid://dluohf10cni5h"
 position = Vector2(0, -16)
 shape = SubResource("CapsuleShape2D_2i4xv")
 debug_color = Color(1, 1, 0, 0.41960785)
+
+[node name="HealthComponent" type="Node" parent="." unique_id=1910900014]
+script = ExtResource("10_6k1fq")
+metadata/_custom_type_script = "uid://b0jut5n5qk35e"
+
+[node name="SkillsComponent" type="Node" parent="." unique_id=856477125]
+script = ExtResource("14_g7itr")
+list = Array[ExtResource("15_oon4j")]([ExtResource("16_ixums"), ExtResource("17_6k1fq"), ExtResource("18_1ttnb")])
+metadata/_custom_type_script = "uid://dwfjopolbsvgq"
