@@ -3,8 +3,9 @@ extends State
 
 @export var hitbox : HitboxComponent
 @export var speed : float = 100
-@export var stop_distance : float = 20
-@export var lose_distance : float = 200
+@export var stop_tolerance: float = 5
+@export var lose_tolerance : float = 150
+@export var vertical_tolerance : float = 10
 
 
 var target : Character
@@ -16,19 +17,19 @@ func enter(_data: Variant = null) -> void:
 	
 	
 func physics_update(_delta: float) -> void:
-	var target_pos : Vector2 = target.global_position
-	var distance : float = (target_pos.x - host.global_position.x)
-	var direction : int = sign(distance)
+	var offset : Vector2 = target.global_position - host.global_position
+	var distance : float = offset.length_squared()
+	var direction : int = sign(offset.x)
 
 	host.flip_x(direction)
 	
 	var attack_distance = hitbox.collision.shape.radius * 2
 	
-	if distance * direction <= stop_distance:
-		host.velocity.x = 0
-	elif distance * direction >= lose_distance:
+	if distance >= lose_tolerance * lose_tolerance:
 		request.emit("Wandering")
-	elif distance * direction <= attack_distance:
+	elif abs(offset.x) <= attack_distance and abs(offset.y) <= vertical_tolerance:
 		request.emit("Attacking")
+	elif abs(offset.x) <= stop_tolerance:
+		host.velocity.x = 0
 	else:
 		host.velocity.x = speed * direction

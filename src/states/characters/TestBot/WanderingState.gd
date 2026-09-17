@@ -23,10 +23,9 @@ func enter(_data: Variant = null) -> void:
 
 func physics_update(_delta: float) -> void:
 	if target != null:
-		var target_distance : float = (target.global_position.x - host.global_position.x)
-		var target_direction : int = sign(target_distance)
+		var target_distance : float = host.global_position.distance_squared_to(target.global_position)
 	
-		if target_distance * target_direction <= chase_distance:
+		if target_distance <= chase_distance * chase_distance:
 			request.emit("Chasing")
 			return
 		
