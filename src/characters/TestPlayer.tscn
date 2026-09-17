@@ -91,9 +91,6 @@ animations = [{
 "speed": 12.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_fsvvc"]
-radius = 24.0
-
 [sub_resource type="Animation" id="Animation_etiq1"]
 resource_name = "Attack"
 length = 1.000008363135904
@@ -121,6 +118,9 @@ _data = {
 &"Attacking": SubResource("Animation_etiq1")
 }
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsvvc"]
+radius = 16.0
+
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_2i4xv"]
 radius = 8.0
 height = 32.0
@@ -141,6 +141,9 @@ sprite_frames = SubResource("SpriteFrames_b5xfj")
 animation = &"Attacking"
 frame = 7
 frame_progress = 1.0
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=260116546]
+libraries/ = SubResource("AnimationLibrary_0f264")
 
 [node name="StateMachine" type="Node" parent="." unique_id=661369049]
 script = ExtResource("3_nvfkx")
@@ -173,7 +176,7 @@ script = ExtResource("9_ixums")
 metadata/_custom_type_script = "uid://cwvi48olyemdg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Attacking/HitboxComponent" unique_id=2047713744]
-position = Vector2(24, -16)
+position = Vector2(16, -16)
 shape = SubResource("CircleShape2D_fsvvc")
 debug_color = Color(1, 0, 0, 0.41960785)
 
