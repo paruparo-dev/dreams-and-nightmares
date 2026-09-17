@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dw8j77unvk2iq"]
 
 [ext_resource type="Script" uid="uid://d2wmaegettptm" path="res://src/core/Game.gd" id="1_tatff"]
+[ext_resource type="Script" uid="uid://cfwngrwc6f8x" path="res://src/core/PlayerCamera.gd" id="2_rongd"]
 [ext_resource type="PackedScene" uid="uid://86n0vuwpeelh" path="res://src/characters/TestPlayer.tscn" id="2_saqgj"]
 [ext_resource type="Script" uid="uid://b0vtlcpwlg1pc" path="res://src/ui/SkillsHud.gd" id="4_ng5f3"]
 [ext_resource type="PackedScene" uid="uid://b36jvduu53yjt" path="res://src/characters/TestBot.tscn" id="4_shdmu"]
@@ -20,6 +21,12 @@ size = Vector2(640, 96)
 script = ExtResource("1_tatff")
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
+
+[node name="PlayerCamera" type="Camera2D" parent="WorldRoot" unique_id=725448610 node_paths=PackedStringArray("target")]
+offset = Vector2(0, -50)
+script = ExtResource("2_rongd")
+target = NodePath("../EntityRoot/TestPlayer")
+speed = 250.0
 
 [node name="LevelRoot" type="Node2D" parent="WorldRoot" unique_id=528319061]
 
