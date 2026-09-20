@@ -1,5 +1,6 @@
 [gd_scene format=3 uid="uid://dw8j77unvk2iq"]
 
+[ext_resource type="Script" uid="uid://d2wmaegettptm" path="res://src/core/Game.gd" id="1_shdmu"]
 [ext_resource type="Script" uid="uid://cfwngrwc6f8x" path="res://src/core/PlayerCamera.gd" id="2_rongd"]
 [ext_resource type="PackedScene" uid="uid://86n0vuwpeelh" path="res://src/characters/TestPlayer.tscn" id="2_saqgj"]
 [ext_resource type="Script" uid="uid://b0vtlcpwlg1pc" path="res://src/ui/SkillsHud.gd" id="4_ng5f3"]
@@ -23,6 +24,7 @@ size = Vector2(64, 16)
 font_size = 8
 
 [node name="Game" type="Node" unique_id=1285932675]
+script = ExtResource("1_shdmu")
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
 
