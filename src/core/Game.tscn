@@ -23,7 +23,6 @@ size = Vector2(64, 16)
 font_size = 8
 
 [node name="Game" type="Node" unique_id=1285932675]
-script = ExtResource("1_tatff")
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
 
@@ -171,33 +170,6 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 1
 script = ExtResource("4_ng5f3")
-
-[node name="SkillSlot" type="PanelContainer" parent="HudLayer/HudRoot/SkillsHud" unique_id=393738680]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-script = ExtResource("5_60e0f")
-
-[node name="Icon" type="TextureRect" parent="HudLayer/HudRoot/SkillsHud/SkillSlot" unique_id=1462620805]
-texture_filter = 1
-layout_mode = 2
-
-[node name="SkillSlot2" type="PanelContainer" parent="HudLayer/HudRoot/SkillsHud" unique_id=835409708]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-script = ExtResource("5_60e0f")
-
-[node name="Icon" type="TextureRect" parent="HudLayer/HudRoot/SkillsHud/SkillSlot2" unique_id=38179610]
-texture_filter = 1
-layout_mode = 2
-
-[node name="SkillSlot3" type="PanelContainer" parent="HudLayer/HudRoot/SkillsHud" unique_id=655447665]
-custom_minimum_size = Vector2(50, 50)
-layout_mode = 2
-script = ExtResource("5_60e0f")
-
-[node name="Icon" type="TextureRect" parent="HudLayer/HudRoot/SkillsHud/SkillSlot3" unique_id=141708140]
-texture_filter = 1
-layout_mode = 2
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
 layer = 1000
