@@ -11,6 +11,7 @@ var wander_distance : float
 var target_pos : Vector2
 var speed : float
 var idle_timer : float
+var is_wandering : bool
 
 
 func enter(_data: Variant = null) -> void:
@@ -31,17 +32,17 @@ func physics_update(_delta: float) -> void:
 		
 	if idle_timer > 0:
 		idle_timer -= _delta
-		
 		host.velocity.x = 0
-		
-		if idle_timer <= 0 and randf() >= 0.9:
-			_randomize()
 			
 		return
+
+	if idle_timer <= 0 and randf() >= 0.7 and not is_wandering:
+		_randomize()
 
 	host.flip_x(wander_direction)
 	
 	var remaining_distance : float = target_pos.x - host.global_position.x
+	is_wandering = remaining_distance * wander_direction > 0
 	if remaining_distance * wander_direction <= 0:
 		host.velocity.x = 0
 		idle_timer = randi_range(3, 5)
