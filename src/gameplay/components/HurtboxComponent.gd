@@ -10,6 +10,9 @@ signal hit(hitbox: HitboxComponent)
 
 
 func _ready() -> void:
+	collision_layer = Game.Layer.HURTBOX
+	collision_mask = Game.Layer.HITBOX
+	
 	area_entered.connect(_on_area_entered)
 	
 	

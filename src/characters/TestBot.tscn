@@ -164,6 +164,7 @@ metadata/_custom_type_script = "uid://segyoa1x8o2p"
 
 [node name="HitboxComponent" type="Area2D" parent="StateMachine/Attacking" unique_id=56329532]
 script = ExtResource("9_3knke")
+is_disabled_on_ready = true
 metadata/_custom_type_script = "uid://cwvi48olyemdg"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="StateMachine/Attacking/HitboxComponent" unique_id=289127494]

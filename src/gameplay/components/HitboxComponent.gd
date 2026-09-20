@@ -3,6 +3,9 @@ extends Area2D
 class_name HitboxComponent
 
 
+@export var is_disabled_on_ready : bool
+
+
 var source : Character
 var damage : float
 var knockback : float
@@ -12,7 +15,11 @@ var knockback : float
 
 
 func _ready() -> void:
-	disable()
+	collision_layer = Game.Layer.HITBOX
+	collision_mask = Game.Layer.HURTBOX
+	
+	if is_disabled_on_ready:
+		disable()
 
 
 func enable() -> void:
