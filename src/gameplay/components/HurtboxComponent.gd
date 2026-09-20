@@ -20,7 +20,9 @@ func _on_area_entered(area: Area2D) -> void:
 	if area is not HitboxComponent:
 		return
 	
-	if area.source == host:
+	var hitbox := area as HitboxComponent
+	
+	if hitbox.source == host:
 		return
-
-	hit.emit(area)
+	
+	hit.emit(hitbox)
