@@ -5,8 +5,8 @@
 [ext_resource type="PackedScene" uid="uid://86n0vuwpeelh" path="res://src/characters/TestPlayer.tscn" id="2_saqgj"]
 [ext_resource type="Script" uid="uid://b0vtlcpwlg1pc" path="res://src/ui/SkillsHud.gd" id="4_ng5f3"]
 [ext_resource type="PackedScene" uid="uid://b36jvduu53yjt" path="res://src/characters/TestBot.tscn" id="4_shdmu"]
-[ext_resource type="Script" uid="uid://dvy8ntoy40d0y" path="res://src/ui/SkillSlot.gd" id="5_60e0f"]
 [ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
+[ext_resource type="Script" uid="uid://ml0bqm0fcd8p" path="res://src/debug/GetNodeCount.gd" id="6_60e0f"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
 normal = Vector2(1, 0)
@@ -218,22 +218,21 @@ offset_bottom = 40.0
 script = ExtResource("5_ng5f3")
 host = NodePath("../../../WorldRoot/EntityRoot/TestBot")
 
-[node name="HostLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=472100485]
+[node name="Label" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=472100485]
 layout_mode = 2
-text = "Host"
+text = "DataDisplay"
 label_settings = SubResource("LabelSettings_ng5f3")
 
-[node name="StateLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=189893438]
-layout_mode = 2
-text = "State"
-label_settings = SubResource("LabelSettings_ng5f3")
-
-[node name="PositionLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=1717918357]
-layout_mode = 2
-text = "Position"
-label_settings = SubResource("LabelSettings_ng5f3")
-
-[node name="DirectionLabel" type="Label" parent="DebugLayer/DebugRoot/DataDisplay" unique_id=329698966]
-layout_mode = 2
-text = "Direction"
-label_settings = SubResource("LabelSettings_ng5f3")
+[node name="GetNodeCountButton" type="Button" parent="DebugLayer/DebugRoot" unique_id=1113404325]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -8.0
+offset_bottom = 8.0
+grow_horizontal = 0
+focus_mode = 0
+theme_override_font_sizes/font_size = 8
+text = "Get Node Count"
+script = ExtResource("6_60e0f")
