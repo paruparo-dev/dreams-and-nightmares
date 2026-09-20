@@ -15,7 +15,7 @@ func _physics_process(_delta: float) -> void:
 	var target_pos : Vector2
 	if Input.is_action_pressed("LookDown"):
 		target_pos = target.global_position
-		target_pos.y += 100
+		target_pos.y += abs(offset.y * 2)
 	else:
 		target_pos = target.global_position
 	
