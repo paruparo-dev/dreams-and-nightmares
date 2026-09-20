@@ -1,0 +1,11 @@
+[gd_scene format=3 uid="uid://d343aywka0ysw"]
+
+[ext_resource type="Script" uid="uid://dvy8ntoy40d0y" path="res://src/ui/SkillSlot.gd" id="1_l5rhs"]
+
+[node name="SkillSlot" type="PanelContainer" unique_id=2092653552]
+custom_minimum_size = Vector2(50, 50)
+script = ExtResource("1_l5rhs")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=1764996028]
+texture_filter = 1
+layout_mode = 2

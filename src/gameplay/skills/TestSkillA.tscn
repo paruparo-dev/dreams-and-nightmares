@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://bcpnftdf0xxm1"]
+
+[ext_resource type="Script" uid="uid://nc37x2bf7exc" path="res://src/gameplay/skills/TestSkillA.gd" id="1_lvrkh"]
+[ext_resource type="Script" uid="uid://cwvi48olyemdg" path="res://src/gameplay/components/HitboxComponent.gd" id="2_fktmn"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_0gu1n"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_fsvvc"]
+
+[node name="TestSkillA" type="Area2D" unique_id=320766494]
+script = ExtResource("1_lvrkh")
+lifetime = 5.0
+speed = 500.0
+is_destroyed_on_hit = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1174672690]
+shape = SubResource("CircleShape2D_0gu1n")
+
+[node name="HitboxComponent" type="Area2D" parent="." unique_id=2039532622]
+script = ExtResource("2_fktmn")
+metadata/_custom_type_script = "uid://cwvi48olyemdg"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitboxComponent" unique_id=154336051]
+shape = SubResource("CircleShape2D_fsvvc")
+debug_color = Color(1, 0, 0, 0.41960785)
