@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://b36jvduu53yjt" path="res://src/characters/TestBot.tscn" id="4_shdmu"]
 [ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
 [ext_resource type="Script" uid="uid://ml0bqm0fcd8p" path="res://src/debug/GetNodeCount.gd" id="6_60e0f"]
+[ext_resource type="Script" uid="uid://b0hw3je2ent0q" path="res://src/ui/ChatHUD.gd" id="7_jtjdo"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
 normal = Vector2(1, 0)
@@ -157,8 +158,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
 
-[node name="SkillsHud" type="HBoxContainer" parent="HudLayer/HudRoot" unique_id=981485768]
+[node name="SkillsHUD" type="HBoxContainer" parent="HUDLayer/HUDRoot" unique_id=981485768]
 custom_minimum_size = Vector2(150, 50)
 layout_mode = 1
 anchors_preset = 3
@@ -172,6 +175,24 @@ grow_horizontal = 0
 grow_vertical = 0
 alignment = 1
 script = ExtResource("4_ng5f3")
+
+[node name="ChatHUD" type="PanelContainer" parent="HUDLayer/HUDRoot" unique_id=825102424]
+custom_minimum_size = Vector2(300, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+script = ExtResource("7_jtjdo")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="HUDLayer/HUDRoot/ChatHUD" unique_id=1045040378]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 8
+text = "ChatHUD"
+scroll_following = true
+vertical_alignment = 2
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
 layer = 1000
