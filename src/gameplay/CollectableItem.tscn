@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cgbqe4qapk24l"]
+
+[ext_resource type="Script" uid="uid://b3iwj0otp2vyd" path="res://src/gameplay/CollectableItem.gd" id="1_85hko"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b5xfj"]
+radius = 6.0
+
+[node name="CollectableItem" type="Area2D" unique_id=66243956]
+collision_layer = 32
+script = ExtResource("1_85hko")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=624016965]
+shape = SubResource("CircleShape2D_b5xfj")
+debug_color = Color(0, 1, 0, 0.41960785)

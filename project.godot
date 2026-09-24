@@ -19,6 +19,7 @@ config/icon="res://assets/icon.svg"
 [autoload]
 
 Debug="*uid://j6plbv62fbwq"
+Chat="*uid://dcbksjqmu530n"
 
 [display]
 
@@ -95,6 +96,7 @@ UseSkill={
 2d_physics/layer_3="Environment"
 2d_physics/layer_4="Hitbox"
 2d_physics/layer_5="Hurtbox"
+2d_physics/layer_6="Collectable"
 
 [physics]
 

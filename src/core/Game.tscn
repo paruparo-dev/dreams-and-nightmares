@@ -3,7 +3,8 @@
 [ext_resource type="Script" uid="uid://d2wmaegettptm" path="res://src/core/Game.gd" id="1_shdmu"]
 [ext_resource type="Script" uid="uid://cfwngrwc6f8x" path="res://src/core/PlayerCamera.gd" id="2_rongd"]
 [ext_resource type="PackedScene" uid="uid://86n0vuwpeelh" path="res://src/characters/TestPlayer.tscn" id="2_saqgj"]
-[ext_resource type="Script" uid="uid://b0vtlcpwlg1pc" path="res://src/ui/SkillsHud.gd" id="4_ng5f3"]
+[ext_resource type="PackedScene" uid="uid://cgbqe4qapk24l" path="res://src/gameplay/CollectableItem.tscn" id="3_xw68a"]
+[ext_resource type="Script" uid="uid://b0vtlcpwlg1pc" path="res://src/ui/SkillsHUD.gd" id="4_ng5f3"]
 [ext_resource type="PackedScene" uid="uid://b36jvduu53yjt" path="res://src/characters/TestBot.tscn" id="4_shdmu"]
 [ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
 [ext_resource type="Script" uid="uid://ml0bqm0fcd8p" path="res://src/debug/GetNodeCount.gd" id="6_60e0f"]
@@ -25,9 +26,11 @@ size = Vector2(64, 16)
 font_size = 8
 
 [node name="Game" type="Node" unique_id=1285932675]
+process_mode = 3
 script = ExtResource("1_shdmu")
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
+metadata/_edit_lock_ = true
 
 [node name="PlayerCamera" type="Camera2D" parent="WorldRoot" unique_id=725448610 node_paths=PackedStringArray("target")]
 offset = Vector2(0, -64)
@@ -36,8 +39,10 @@ target = NodePath("../EntityRoot/TestPlayer")
 speed = 250.0
 
 [node name="LevelRoot" type="Node2D" parent="WorldRoot" unique_id=528319061]
+metadata/_edit_lock_ = true
 
 [node name="TestLevel" type="Node2D" parent="WorldRoot/LevelRoot" unique_id=1146135526]
+metadata/_edit_lock_ = true
 
 [node name="LeftBorder" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=1914319583]
 position = Vector2(0, 192)
@@ -56,6 +61,18 @@ collision_mask = 3
 shape = SubResource("WorldBoundaryShape2D_shdmu")
 
 [node name="EnvironmentRoot" type="Node2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=355427441]
+
+[node name="CollectableItem" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=66243956 instance=ExtResource("3_xw68a")]
+position = Vector2(256, 112)
+
+[node name="CollectableItem2" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=1556501621 instance=ExtResource("3_xw68a")]
+position = Vector2(320, 48)
+
+[node name="CollectableItem3" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=1641786679 instance=ExtResource("3_xw68a")]
+position = Vector2(96, 48)
+
+[node name="CollectableItem4" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=960567514 instance=ExtResource("3_xw68a")]
+position = Vector2(576, 112)
 
 [node name="Ground" type="StaticBody2D" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=46001906]
 position = Vector2(320, 312)
@@ -138,20 +155,22 @@ shape = SubResource("RectangleShape2D_b5xfj")
 one_way_collision = true
 
 [node name="ObstaclesRoot" type="Node2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=1669268345]
+metadata/_edit_lock_ = true
 
 [node name="EntityRoot" type="Node2D" parent="WorldRoot" unique_id=1770554558]
+metadata/_edit_lock_ = true
 
 [node name="TestPlayer" parent="WorldRoot/EntityRoot" unique_id=2132633043 node_paths=PackedStringArray("skills_hud") instance=ExtResource("2_saqgj")]
 position = Vector2(32, 264)
-skills_hud = NodePath("../../../HudLayer/HudRoot/SkillsHud")
+skills_hud = NodePath("../../../HUDLayer/HUDRoot/SkillsHUD")
 
 [node name="TestBot" parent="WorldRoot/EntityRoot" unique_id=1579723341 instance=ExtResource("4_shdmu")]
 position = Vector2(608, 264)
 
-[node name="HudLayer" type="CanvasLayer" parent="." unique_id=2142341151]
+[node name="HUDLayer" type="CanvasLayer" parent="." unique_id=2142341151]
 layer = 20
 
-[node name="HudRoot" type="Control" parent="HudLayer" unique_id=1775597548]
+[node name="HUDRoot" type="Control" parent="HUDLayer" unique_id=1775597548]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -204,6 +223,8 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="DataDisplay" type="VBoxContainer" parent="DebugLayer/DebugRoot" unique_id=877802488 node_paths=PackedStringArray("host")]
 layout_mode = 1
