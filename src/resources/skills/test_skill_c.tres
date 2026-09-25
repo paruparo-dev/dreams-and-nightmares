@@ -8,4 +8,6 @@ script = ExtResource("2_y4uwd")
 id = "c"
 name = "Skill C"
 icon = ExtResource("1_r0vo4")
+scene_path = "res://src/gameplay/skills/TestSkillA.tscn"
+cooldown = 10.0
 metadata/_custom_type_script = "uid://bhgqk86nclp4k"

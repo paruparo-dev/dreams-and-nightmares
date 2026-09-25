@@ -15,7 +15,9 @@
 [ext_resource type="Script" uid="uid://c1tm8scuyesdk" path="res://src/states/characters/TestPlayer/StunnedState.gd" id="11_g7itr"]
 [ext_resource type="Script" uid="uid://dwfjopolbsvgq" path="res://src/gameplay/components/SkillsComponent.gd" id="14_g7itr"]
 [ext_resource type="Resource" uid="uid://gjrbrp4jecii" path="res://src/resources/skills/test_skill_a.tres" id="16_ixums"]
+[ext_resource type="Resource" uid="uid://b0xg3w710tnsh" path="res://src/resources/skills/test_skill_b.tres" id="17_oon4j"]
 [ext_resource type="Script" uid="uid://2088537dwllw" path="res://src/gameplay/skills/Skill.gd" id="17_yfbq3"]
+[ext_resource type="Resource" uid="uid://ksy62hibfhkl" path="res://src/resources/skills/test_skill_c.tres" id="18_oon4j"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_b5xfj"]
 radius = 8.0
@@ -208,4 +210,14 @@ metadata/_custom_type_script = "uid://dwfjopolbsvgq"
 [node name="TestSkillA" type="Node" parent="SkillsComponent" unique_id=1095757519]
 script = ExtResource("17_yfbq3")
 data = ExtResource("16_ixums")
+metadata/_custom_type_script = "uid://2088537dwllw"
+
+[node name="TestSkillB" type="Node" parent="SkillsComponent" unique_id=1407901154]
+script = ExtResource("17_yfbq3")
+data = ExtResource("17_oon4j")
+metadata/_custom_type_script = "uid://2088537dwllw"
+
+[node name="TestSkillC" type="Node" parent="SkillsComponent" unique_id=1714638955]
+script = ExtResource("17_yfbq3")
+data = ExtResource("18_oon4j")
 metadata/_custom_type_script = "uid://2088537dwllw"
