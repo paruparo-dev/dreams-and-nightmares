@@ -3,7 +3,7 @@ extends Character
 class_name TestPlayer
 
 
-@export var skills_hud : SkillsHud
+@export var skills_hud : SkillsHUD
 
 
 var attack_cd_timer : float
