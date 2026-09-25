@@ -37,3 +37,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		index = (index + 1) % list.size()
 		equipped = list[index]
 		equipped_changed.emit(list, index)
+		
+		
+func _exit_tree() -> void:
+	for conn in equipped_changed.get_connections():
+		equipped_changed.disconnect(conn.callable)

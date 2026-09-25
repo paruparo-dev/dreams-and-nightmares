@@ -26,3 +26,8 @@ func _on_area_entered(area: Area2D) -> void:
 		return
 	
 	hit.emit(hitbox)
+
+
+func _exit_tree() -> void:
+	for conn in hit.get_connections():
+		hit.disconnect(conn.callable)

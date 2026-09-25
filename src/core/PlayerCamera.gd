@@ -12,6 +12,9 @@ func _ready() -> void:
 
 
 func _physics_process(_delta: float) -> void:
+	if target == null or target.is_queued_for_deletion():
+		return
+	
 	var target_pos : Vector2
 	if Input.is_action_pressed("LookDown"):
 		target_pos = target.global_position
