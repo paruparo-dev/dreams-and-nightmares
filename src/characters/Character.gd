@@ -18,5 +18,13 @@ func flip_x(direction: float) -> void:
 	sprite.flip_h = face_direction < 1
 	
 	
+func get_component(type: Script) -> Node:
+	for child in get_children():
+		if child.get_script() == type:
+			return child
+		
+	return null
+	
+	
 func _on_hit(_hitbox: HitboxComponent) -> void:
 	pass

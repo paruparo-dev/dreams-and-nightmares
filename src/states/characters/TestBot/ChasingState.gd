@@ -17,6 +17,9 @@ func enter(_data: Variant = null) -> void:
 	
 	
 func physics_update(_delta: float) -> void:
+	if target == null or target.is_queued_for_deletion():
+		request.emit("Wandering")
+	
 	var offset : Vector2 = target.global_position - host.global_position
 	var distance : float = offset.length_squared()
 	var direction : int = sign(offset.x)
