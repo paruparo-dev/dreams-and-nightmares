@@ -3,6 +3,7 @@ extends Character
 class_name TestPlayer
 
 
+@export var health_bar_hud : HealthBarHUD
 @export var skills_hud : SkillsHUD
 
 
@@ -31,6 +32,7 @@ func _ready() -> void:
 	state_machine.transition_to("Idle")
 
 	# remove this later and use independent player and UI binding class
+	health_bar_hud.bind(health)
 	skills_hud.bind(skills)
 
 

@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
 [ext_resource type="Script" uid="uid://ml0bqm0fcd8p" path="res://src/debug/GetNodeCount.gd" id="6_60e0f"]
 [ext_resource type="Script" uid="uid://b0hw3je2ent0q" path="res://src/ui/ChatHUD.gd" id="7_jtjdo"]
+[ext_resource type="Script" uid="uid://d3abhte4bcv5y" path="res://src/ui/HealthBarHUD.gd" id="9_etiq1"]
 [ext_resource type="Script" uid="uid://cftgiai0kh3sv" path="res://src/debug/KillCharacterButton.gd" id="10_coggd"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
@@ -22,6 +23,8 @@ size = Vector2(640, 96)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5xfj"]
 size = Vector2(64, 16)
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_0aos3"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_ng5f3"]
 font_size = 8
@@ -165,8 +168,9 @@ metadata/_edit_lock_ = true
 [node name="EntityRoot" type="Node2D" parent="WorldRoot" unique_id=1770554558]
 metadata/_edit_lock_ = true
 
-[node name="TestPlayer" parent="WorldRoot/EntityRoot" unique_id=2132633043 node_paths=PackedStringArray("skills_hud") instance=ExtResource("2_saqgj")]
+[node name="TestPlayer" parent="WorldRoot/EntityRoot" unique_id=2132633043 node_paths=PackedStringArray("health_bar_hud", "skills_hud") instance=ExtResource("2_saqgj")]
 position = Vector2(32, 264)
+health_bar_hud = NodePath("../../../HUDLayer/HUDRoot/HealthBarHUD")
 skills_hud = NodePath("../../../HUDLayer/HUDRoot/SkillsHUD")
 
 [node name="TestBot" parent="WorldRoot/EntityRoot" unique_id=1579723341 instance=ExtResource("4_shdmu")]
@@ -217,6 +221,16 @@ theme_override_font_sizes/normal_font_size = 8
 text = "ChatHUD"
 scroll_following = true
 vertical_alignment = 2
+
+[node name="HealthBarHUD" type="TextureProgressBar" parent="HUDLayer/HUDRoot" unique_id=1591704204]
+custom_minimum_size = Vector2(200, 16)
+layout_mode = 1
+offset_right = 200.0
+offset_bottom = 16.0
+value = 100.0
+nine_patch_stretch = true
+texture_progress = SubResource("PlaceholderTexture2D_0aos3")
+script = ExtResource("9_etiq1")
 
 [node name="DebugLayer" type="CanvasLayer" parent="." unique_id=1726157921]
 layer = 1000
