@@ -36,7 +36,7 @@ func physics_update(_delta: float) -> void:
 			
 		return
 
-	if idle_timer <= 0 and randf() >= 0.7 and not is_wandering:
+	if idle_timer <= 0 and not is_wandering:
 		_randomize()
 
 	host.flip_x(wander_direction)
@@ -45,7 +45,7 @@ func physics_update(_delta: float) -> void:
 	is_wandering = remaining_distance * wander_direction > 0
 	if remaining_distance * wander_direction <= 0:
 		host.velocity.x = 0
-		idle_timer = randi_range(3, 5)
+		idle_timer = randi_range(1, 3)
 	else:
 		host.velocity.x = speed * wander_direction
 
