@@ -8,6 +8,15 @@ class_name TestPlayer
 
 var attack_cd_timer : float
 var aerial_attack_count : int
+var can_attack : bool:
+	get:
+		if attack_cd_timer > 0:
+				return false
+		
+		if not is_on_floor() and aerial_attack_count >= 1:
+				return false
+		
+		return true
 
 
 @onready var health : HealthComponent = $HealthComponent
@@ -34,14 +43,8 @@ func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
 	
-func can_attack() -> bool:
-	if attack_cd_timer > 0:
-		return false
-	
-	if not is_on_floor() and aerial_attack_count >= 1:
-		return false
-	
-	return true
+func collect_item(item: CollectableItem) -> void:
+	Chat.send("collected %s" % item.name, name)
 
 
 func _on_hit(_hitbox: HitboxComponent) -> void:

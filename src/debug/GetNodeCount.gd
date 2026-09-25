@@ -6,4 +6,6 @@ func _ready() -> void:
 	
 	
 func _on_pressed() -> void:
-	print("Current nodes in scene: %d" % get_tree().get_node_count())
+	var msg : String = "Current nodes in scene: %d" % get_tree().get_node_count()
+	print(msg)
+	Chat.announce(msg)

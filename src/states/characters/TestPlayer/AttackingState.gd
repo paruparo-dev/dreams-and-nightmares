@@ -12,7 +12,7 @@ extends State
 
 
 func enter(_data: Variant = null) -> void:
-	if not host.can_attack():
+	if not host.can_attack:
 		request.emit("Idle")
 		return
 	
