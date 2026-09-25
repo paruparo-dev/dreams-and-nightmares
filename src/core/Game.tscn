@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://ccqkjjnf88krb" path="res://src/debug/DataDisplay.gd" id="5_ng5f3"]
 [ext_resource type="Script" uid="uid://ml0bqm0fcd8p" path="res://src/debug/GetNodeCount.gd" id="6_60e0f"]
 [ext_resource type="Script" uid="uid://b0hw3je2ent0q" path="res://src/ui/ChatHUD.gd" id="7_jtjdo"]
+[ext_resource type="Script" uid="uid://cftgiai0kh3sv" path="res://src/debug/KillCharacterButton.gd" id="10_coggd"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_b5xfj"]
 normal = Vector2(1, 0)
@@ -28,6 +29,7 @@ font_size = 8
 [node name="Game" type="Node" unique_id=1285932675]
 process_mode = 3
 script = ExtResource("1_shdmu")
+debug_collisions_enabled = true
 
 [node name="WorldRoot" type="Node2D" parent="." unique_id=315973651]
 metadata/_edit_lock_ = true
@@ -241,16 +243,29 @@ layout_mode = 2
 text = "DataDisplay"
 label_settings = SubResource("LabelSettings_ng5f3")
 
-[node name="GetNodeCountButton" type="Button" parent="DebugLayer/DebugRoot" unique_id=1113404325]
-custom_minimum_size = Vector2(64, 16)
+[node name="Buttons" type="VBoxContainer" parent="DebugLayer/DebugRoot" unique_id=1579985880]
+custom_minimum_size = Vector2(100, 0)
 layout_mode = 1
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
-offset_left = -8.0
-offset_bottom = 8.0
+offset_left = -70.0
+offset_bottom = 40.0
 grow_horizontal = 0
+
+[node name="GetNodeCountButton" type="Button" parent="DebugLayer/DebugRoot/Buttons" unique_id=1113404325]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
 focus_mode = 0
 theme_override_font_sizes/font_size = 8
 text = "Get Node Count"
 script = ExtResource("6_60e0f")
+
+[node name="KillCharacterButton" type="Button" parent="DebugLayer/DebugRoot/Buttons" unique_id=1441292111 node_paths=PackedStringArray("target")]
+custom_minimum_size = Vector2(64, 16)
+layout_mode = 2
+focus_mode = 0
+theme_override_font_sizes/font_size = 8
+text = "Kill Character"
+script = ExtResource("10_coggd")
+target = NodePath("../../../../WorldRoot/EntityRoot/TestPlayer")
