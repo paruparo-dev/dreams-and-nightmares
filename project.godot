@@ -42,7 +42,7 @@ naming/script_name_casing=1
 [file_customization]
 
 folder_colors={
-"res://build/": "gray",
+"res://build/": "green",
 "res://src/": "purple"
 }
 
