@@ -216,6 +216,7 @@ grow_vertical = 0
 script = ExtResource("7_jtjdo")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="HUDLayer/HUDRoot/ChatHUD" unique_id=1045040378]
+custom_minimum_size = Vector2(200, 32)
 layout_mode = 2
 theme_override_font_sizes/normal_font_size = 8
 text = "ChatHUD"
@@ -246,6 +247,7 @@ mouse_filter = 2
 metadata/_edit_lock_ = true
 
 [node name="DataDisplay" type="VBoxContainer" parent="DebugLayer/DebugRoot" unique_id=877802488 node_paths=PackedStringArray("host")]
+visible = false
 layout_mode = 1
 offset_right = 40.0
 offset_bottom = 40.0
