@@ -3,7 +3,7 @@ extends Node
 class_name Game
 
 
-enum Layer { PLAYER, BOT, ENVIRONMENT, HITBOX, HURTBOX }
+enum Layer { NONE, PLAYER, BOT, ENVIRONMENT, HITBOX, HURTBOX, COLLECTABLE }
 
 
 func _ready() -> void:

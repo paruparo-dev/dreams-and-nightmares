@@ -48,6 +48,7 @@ metadata/_edit_lock_ = true
 position = Vector2(0, 192)
 collision_layer = 4
 collision_mask = 3
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/LeftBorder" unique_id=1424233476]
 shape = SubResource("WorldBoundaryShape2D_b5xfj")
@@ -56,11 +57,13 @@ shape = SubResource("WorldBoundaryShape2D_b5xfj")
 position = Vector2(640, 192)
 collision_layer = 4
 collision_mask = 3
+metadata/_edit_lock_ = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="WorldRoot/LevelRoot/TestLevel/RightBorder" unique_id=1971678381]
 shape = SubResource("WorldBoundaryShape2D_shdmu")
 
 [node name="EnvironmentRoot" type="Node2D" parent="WorldRoot/LevelRoot/TestLevel" unique_id=355427441]
+metadata/_edit_lock_ = true
 
 [node name="CollectableItem" parent="WorldRoot/LevelRoot/TestLevel/EnvironmentRoot" unique_id=66243956 instance=ExtResource("3_xw68a")]
 position = Vector2(256, 112)
